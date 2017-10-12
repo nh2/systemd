@@ -327,7 +327,8 @@ struct sd_bus {
         LIST_HEAD(sd_bus_track, tracks);
 };
 
-#define BUS_DEFAULT_TIMEOUT ((usec_t) (25 * USEC_PER_SEC))
+/* nh2: Patched from 25 to 1 second as workaround for https://github.com/systemd/systemd/issues/2863 */
+#define BUS_DEFAULT_TIMEOUT ((usec_t) (1 * USEC_PER_SEC))
 
 #define BUS_WQUEUE_MAX (192*1024)
 #define BUS_RQUEUE_MAX (192*1024)
